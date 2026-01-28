@@ -1,12 +1,10 @@
-import './App.css';
 import "./styles/general/main.scss";
-
-
+import Heading from "./Components/Heading/Heading";
 export function App() {
-  return (
-    <>
-      <h1> Tips wig</h1>
-      <p>Edit <code>src/App.tsx</code> to get started!</p>
-    </>
-  );
+    return (
+        <div className="container">
+            <Heading title="Daily Todo's" />
+            <p>Edit <code>src/App.tsx</code> to get started!</p>
+        </div>
+    );
 }

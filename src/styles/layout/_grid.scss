@@ -1,0 +1,12 @@
+$container : 1200px;
+
+.container {
+  margin: 0 auto;
+  max-width: $container;
+  width:60%;
+}
+/* colum nastavi za layout če želiš dva z for zanko    */
+.row {
+  display: flex;
+  min-height: 1px;
+}

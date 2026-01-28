@@ -1,0 +1,10 @@
+@use "../../styles/general/general";
+
+.heading {
+  display: flex;
+  h1 {
+    color: general.$colors-text;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}
