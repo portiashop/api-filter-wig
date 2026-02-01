@@ -1,0 +1,16 @@
+@use "./colors" as *;
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: $textColorbg;
+  color: $text-dark;
+}
+
+.container {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  padding: 16px 0 32px;
+}

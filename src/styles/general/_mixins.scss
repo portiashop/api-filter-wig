@@ -1,0 +1,32 @@
+/* =========================
+   Media query mixins
+   Mobile-first approach
+   ========================= */
+
+/* Small phones */
+@mixin sm {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+/* Tablets */
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+/* Small laptops */
+@mixin lg {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+/* Large screens */
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}

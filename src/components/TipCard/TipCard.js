@@ -1,12 +1,11 @@
-import React from "react";
-/*Displays single tip card with favorite button */
-function TipCard({ tip, addFavorite }) {
+import styles from "./_tipCard.module.scss";
+
+const TipCard = ({ tip }) => {
     return (
-        <div className="tip-card">
-            <p>{tip.tip}</p>
-            <button onClick={() => addFavorite(tip)}>❤️ Favorite</button>
+        <div className={styles.card}>
+            <p className={styles.text}>{tip}</p>
         </div>
     );
-}
+};
 
 export default TipCard;

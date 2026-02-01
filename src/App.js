@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
-import "./styles/main.scss";
-import Heading from "./components/Header/Heading";
-import Input from "./components/Input/Input";
-import Button from "./components/Button";
-import Form from "./components/Form/Form";
-import Footer from "./components/Foother/Footer";
-import TipList from "./components/TipsList";
-import RandomTip from "./components/RandomTip/RandomTip";
-import SearchBar from "./components/SearchBar/SearchBar";
-import Favorites from "./components/Favorites/Favorites";
+import "./styles/main.scss";import Header from "./components/Header/Header";
+import TipCard from "./components/TipCard/TipCard";
 
-import Tips from "./components/Tips/Tips.js";
 const App = () => {
     return (
         <div>
-            <h1>Wig Care Tips</h1>
-            <Tips />
+            <Header title="Wig Care Tips" subtitle="Simple care tips for everyday wig use" />
+
+            <main className="container">
+                <TipCard tip="Store wigs on a stand to keep their shape." />
+                <TipCard tip="Wash synthetic wigs every 6–8 wears." />
+            </main>
         </div>
     );
 };
