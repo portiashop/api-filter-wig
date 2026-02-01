@@ -1,17 +1,24 @@
-// $bg: #202020;
-$bg: #F5F5F5;
+// Base
+$bg: #ffffff;
 $outline: #373737;
 $text: #BABABA;
+
+// Actions
 $add: #626ED9;
 $done: #ECBB5B;
 $remove: #C64444;
-$text: #BABABA;
-$remove: #C64444;
-$primary: #FF69B4; // zarko roza - za gumbe
-$secundary : #E0BBE4; //  siva za ozadja poudarke
-$textColorcard: #FFFFFF; //  bela - za kartic
-$textColorbg: #F5F5F5; //  svetlo siva - za ozadje aplikacije
-$hightext: #FFD700; // zlata - za priljubljene ikone zvezdic
 
+// Brand
+$primary: #FF69B4;       // pink – buttons
+$secondary: #E0BBE4;     // soft background accents
+$accent: #E7C6A5;        // warm nude
 
+// Text
+$textColorcard: #FFFFFF;
+$textColorbg: #F5F5F5;
+$text-light: #6B6B6B;
+$text-dark: #2E2E2E;
 
+// UI
+$border: #EAEAEA;
+$hightext: #FFD700;      // gold – favorite star

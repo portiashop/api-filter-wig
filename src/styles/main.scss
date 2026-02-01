@@ -1,0 +1,72 @@
+@use '../../node_modules/scss-reset/reset.css';
+@use "general/general";
+@use "layout/layout";
+@use "./general/colors";
+@use "./general/buttons";
+
+/* html {
+  background-color: general.$colors-bg;
+  font-family: general.$variables-font;
+  color: general.$colors-text;
+  margin-top: 2em;
+}
+h1 { color: general.$colors-text; }
+*/
+
+$app-color: #ff69b4;
+$bg-color: #f0f0f0;
+
+body {
+  font-family: Arial, sans-serif;
+  background: $bg-color;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width:600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tip-card {
+  background: #ffe4e1;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    background: $app-color;
+    border: none;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+}
+
+.random-tip {
+  margin-bottom: 1rem;
+  button {
+    background: $app-color;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

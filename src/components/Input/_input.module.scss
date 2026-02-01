@@ -1,0 +1,10 @@
+@use "../../styles/general/general";
+
+.formControl {
+  border-radius: 5px;
+  border: 1px solid general.$colors-outline;
+  color: general.$colors-text;
+  // TODO placehoder styling
+  padding: 10px 20px;
+  background-color: general.$colors-bg;
+}
