@@ -1,0 +1,13 @@
+@use "../../styles/general/mixins" as *;
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+/* On tablet and up: 2 columns */
+@include md {
+  .list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
