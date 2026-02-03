@@ -140,11 +140,11 @@ const App = () => {
                 />
 
                 {/* SHOW MORE */}
-                {visibleTips.length > visibleCount && (
+                {visibleTips.length > tipsToShow.length && (
                     <button
                         className="btn btn--secondary"
                         type="button"
-                        onClick={() => setVisibleCount((c) => c + 6)}
+                        onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
                     >
                         Show more
                     </button>
@@ -152,7 +152,6 @@ const App = () => {
 
                 {/* FAVORITES */}
                 <SectionTitle>MY FAVORITES</SectionTitle>
-
 
                 <Favorites
                     tips={tips}
