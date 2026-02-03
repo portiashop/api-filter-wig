@@ -1,0 +1,31 @@
+@use "../../styles/general/colors" as *;
+@use "../../styles/general/mixins" as *;
+
+.section {
+  margin-top: 22px;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: $text-dark;
+
+  @include md {
+    font-size: 18px;
+  }
+}
+
+.empty {
+  margin: 0;
+  color: $text-light;
+  font-style: italic;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+}
