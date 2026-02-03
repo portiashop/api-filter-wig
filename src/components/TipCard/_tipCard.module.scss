@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../styles/general/colors" as *;
 @use "../../styles/general/mixins" as *;
 
@@ -23,4 +24,8 @@
   margin-top: 12px;
   display: flex;
   justify-content: flex-end;
+}
+.random {
+  background: $accent;               // warm nude highlight
+  border-color: color.adjust($accent, $lightness: -6%);
 }

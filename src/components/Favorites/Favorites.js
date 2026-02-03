@@ -6,7 +6,6 @@ const Favorites = ({ tips, favoriteIds, onToggleFavorite }) => {
 
     return (
         <section className={styles.section}>
-            <h2 className={styles.title}>Favorites</h2>
 
             {favoriteTips.length === 0 ? (
                 <p className={styles.empty}>No favorites yet.</p>

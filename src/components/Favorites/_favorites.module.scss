@@ -2,9 +2,12 @@
 @use "../../styles/general/mixins" as *;
 
 .section {
-  margin-top: 22px;
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  background: $secondary;           // soft highlight background
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
-
 .title {
   margin: 0 0 10px;
   font-size: 16px;

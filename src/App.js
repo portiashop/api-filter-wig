@@ -58,6 +58,7 @@ const App = () => {
                 {randomTip && (
                     <TipCard
                         tip={randomTip.tip}
+                        variant="random"   // 👈 HERE
                         isFavorite={favoriteIds.includes(randomTip.id)}
                         onToggleFavorite={() => toggleFavorite(randomTip.id)}
                     />
@@ -79,6 +80,7 @@ const App = () => {
 
                 {/* FAVORITES */}
                 <SectionTitle>Favorites</SectionTitle>
+
                 <Favorites
                     tips={tips}
                     favoriteIds={favoriteIds}

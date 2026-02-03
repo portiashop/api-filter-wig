@@ -1,12 +1,17 @@
 import styles from "./_tipCard.module.scss";
 
-// isFavorite controls button text + style
-// onToggleFavorite is a function passed from App
-// The button only shows if onToggleFavorite exists
-
-const TipCard = ({ tip, isFavorite = false, onToggleFavorite }) => {
+const TipCard = ({
+                     tip,
+                     isFavorite = false,
+                     onToggleFavorite,
+                     variant = "default", // 👈 NEW
+                 }) => {
     return (
-        <div className={styles.card}>
+        <div
+            className={`${styles.card} ${
+                variant === "random" ? styles.random : ""
+            }`}
+        >
             <p className={styles.text}>{tip}</p>
 
             {onToggleFavorite && (
