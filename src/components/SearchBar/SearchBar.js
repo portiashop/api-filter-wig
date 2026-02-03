@@ -1,14 +1,16 @@
-import React from "react";
-// Input for search functionality
-function SearchBar({ search, setSearch }) {
+import styles from "./_searchBar.module.scss";
+
+const SearchBar = ({ value, onChange }) => {
     return (
-        <input
-            type="text"
-            placeholder="Search tips..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className={styles.wrap}>
+            <input
+                className={styles.input}
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                placeholder="Search tips (e.g. wash, store, brush)…"
+            />
+        </div>
     );
-}
+};
 
 export default SearchBar;
