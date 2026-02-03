@@ -12,14 +12,20 @@ const App = () => {
     // STATE
     const [search, setSearch] = useState("");
     const [favoriteIds, setFavoriteIds] = useState([]);
+
     const [randomTip, setRandomTip] = useState(null);
 
     // Show-more state (6 at first)
-    const [visibleCount, setVisibleCount] = useState(6);
+    const PAGE_SIZE = 6;
+    const [showAll, setShowAll] = useState(false);
 
-    // Reset show-more when search changes
+    const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+
+    // Reset show-more when search changes, Reset showAll when search changes
     useEffect(() => {
-        setVisibleCount(6);
+        setVisibleCount(PAGE_SIZE);
+        setShowAll(false);
     }, [search]);
 
     // Filter by search
@@ -36,8 +42,9 @@ const App = () => {
 
     // Only show N tips
     const tipsToShow = useMemo(() => {
-        return visibleTips.slice(0, visibleCount);
-    }, [visibleTips, visibleCount]);
+        return showAll ? visibleTips : visibleTips.slice(0, visibleCount);
+    }, [visibleTips, visibleCount, showAll]);
+
 
     // Handlers
     const toggleFavorite = (id) => {
@@ -112,7 +119,31 @@ const App = () => {
                 )}
 
                 {/* FAVORITES */}
-                <SectionTitle>Favorites</SectionTitle>
+                <SectionTitle>MY FAVORITES</SectionTitle>
+
+                <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
+  <span style={{ color: "#6B6B6B", fontSize: "13px" }}>
+    Showing {tipsToShow.length} of {visibleTips.length}
+  </span>
+
+                    {visibleTips.length > PAGE_SIZE && (
+                        <button
+                            className="btn btn--secondary"
+                            type="button"
+                            onClick={() => {
+                                if (showAll) {
+                                    setShowAll(false);
+                                    setVisibleCount(PAGE_SIZE);
+                                } else {
+                                    setShowAll(true);
+                                }
+                            }}
+                        >
+                            {showAll ? "Show less" : "Show all"}
+                        </button>
+                    )}
+                </div>
+
                 <Favorites
                     tips={tips}
                     favoriteIds={favoriteIds}
