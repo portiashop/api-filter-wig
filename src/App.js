@@ -11,7 +11,12 @@ import { tips } from "./data/tips";
 const App = () => {
     // STATE
     const [search, setSearch] = useState("");
-    const [favoriteIds, setFavoriteIds] = useState([]);
+
+    // ← Tukaj dodamo inicializacijo iz localStorage
+    const [favoriteIds, setFavoriteIds] = useState(() => {
+        const saved = localStorage.getItem("wigTipsFavorites");
+        return saved ? JSON.parse(saved) : [];
+    });
 
     const [randomTip, setRandomTip] = useState(null);
 
@@ -21,6 +26,10 @@ const App = () => {
 
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
+// ← Dodamo ta useEffect, ki shrani vsakič, ko se favorite spremenijo
+    useEffect(() => {
+        localStorage.setItem("wigTipsFavorites", JSON.stringify(favoriteIds));
+    }, [favoriteIds]);
 
     // Reset show-more when search changes, Reset showAll when search changes
     useEffect(() => {
@@ -100,7 +109,30 @@ const App = () => {
                 {filteredTips.length > 0 && visibleTips.length === 0 && (
                     <EmptyState message="All matching tips are already in Favorites." />
                 )}
+                {/* ← Tukaj dodamo / premaknemo kontrolnik */}
 
+                {visibleTips.length > PAGE_SIZE && (
+                    <div style={{ display: "flex", gap: "10px", alignItems: "center", margin: "16px 0" }}>
+    <span style={{ color: "#6B6B6B", fontSize: "13px" }}>
+      Showing {tipsToShow.length} of {visibleTips.length}
+    </span>
+                        <button
+                            className="btn btn--secondary"
+                            type="button"
+                            onClick={() => {
+                                if (showAll) {
+                                    setShowAll(false);
+                                    setVisibleCount(PAGE_SIZE);
+                                } else {
+                                    setShowAll(true);
+                                }
+                            }}
+                        >
+                            {showAll ? "Show less" : "Show all"}
+                        </button>
+                    </div>
+                )}
+                {/* ←END SHOW MORE  LESS kontrolnik */}
                 <TipList
                     tips={tipsToShow}
                     favoriteIds={favoriteIds}
@@ -121,28 +153,6 @@ const App = () => {
                 {/* FAVORITES */}
                 <SectionTitle>MY FAVORITES</SectionTitle>
 
-                <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
-  <span style={{ color: "#6B6B6B", fontSize: "13px" }}>
-    Showing {tipsToShow.length} of {visibleTips.length}
-  </span>
-
-                    {visibleTips.length > PAGE_SIZE && (
-                        <button
-                            className="btn btn--secondary"
-                            type="button"
-                            onClick={() => {
-                                if (showAll) {
-                                    setShowAll(false);
-                                    setVisibleCount(PAGE_SIZE);
-                                } else {
-                                    setShowAll(true);
-                                }
-                            }}
-                        >
-                            {showAll ? "Show less" : "Show all"}
-                        </button>
-                    )}
-                </div>
 
                 <Favorites
                     tips={tips}
