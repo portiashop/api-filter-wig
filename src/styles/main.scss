@@ -1,9 +1,9 @@
 @use '../../node_modules/scss-reset/reset.css';
 @use "general/general";
 @use "layout/layout";
-@use "./general/colors";
-@use "./general/base";
-@use "./general/buttons";
+@use "./general/_colors";
+@use "./general/_base";
+@use "./general/_buttons";
 
 
 $app-color: #ff69b4;

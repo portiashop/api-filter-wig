@@ -10,7 +10,7 @@ function RandomTip({ tips }) {
 
     return (
         <div className="random-tip">
-            <button onClick={handleRandom}>🎲 Show Random Tip</button>
+            <button onClick={handleRandom}> Show Random Tip</button>
             {randomTip && <p>{randomTip.tip}</p>}
         </div>
     );

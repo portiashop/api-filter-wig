@@ -69,6 +69,9 @@ const App = () => {
         const index = Math.floor(Math.random() * list.length);
         setRandomTip(list[index]);
     };
+    const clearRandomTip = () => {
+        setRandomTip(null);
+    };
 
     return (
         <div>
@@ -91,13 +94,34 @@ const App = () => {
 
                 {/* RANDOM TIP */}
                 {randomTip && (
-                    <TipCard
-                        tip={randomTip.tip}
-                        variant="random"
-                        isFavorite={favoriteIds.includes(randomTip.id)}
-                        onToggleFavorite={() => toggleFavorite(randomTip.id)}
-                    />
+                    <div style={{ marginBottom: '40px' }}>
+                        <SectionTitle>Featured Random Tip</SectionTitle>
+
+                        <div>
+                            <TipCard
+                                tip={randomTip.tip}
+                                variant="random"
+                                isFavorite={favoriteIds.includes(randomTip.id)}
+                                onToggleFavorite={() => toggleFavorite(randomTip.id)}
+                            />
+                            {/* TUKAJ DODAMO × GUMB – x   */}
+                            <div style={{ marginTop: '16px', textAlign: 'center' }}>
+                                <button
+                                    onClick={clearRandomTip}
+                                    className="btn-close-icon"
+                                    type="button"
+                                    title="Zapri random nasvet"   // ← tooltip ob hover
+                                    aria-label="Odstrani naključni nasvet"
+
+                                >
+                                    ×
+                                </button>
+                            </div>
+                            {/* konec × gumba */}
+                        </div>
+                    </div>
                 )}
+                {/* end RANDOM TIP */}
 
                 {/* ALL TIPS */}
                 <SectionTitle>All tips</SectionTitle>
@@ -109,47 +133,59 @@ const App = () => {
                 {filteredTips.length > 0 && visibleTips.length === 0 && (
                     <EmptyState message="All matching tips are already in Favorites." />
                 )}
-                {/* ← Tukaj dodamo / premaknemo kontrolnik */}
 
-                {visibleTips.length > PAGE_SIZE && (
-                    <div style={{ display: "flex", gap: "10px", alignItems: "center", margin: "16px 0" }}>
-    <span style={{ color: "#6B6B6B", fontSize: "13px" }}>
-      Showing {tipsToShow.length} of {visibleTips.length}
-    </span>
-                        <button
-                            className="btn btn--secondary"
-                            type="button"
-                            onClick={() => {
-                                if (showAll) {
-                                    setShowAll(false);
-                                    setVisibleCount(PAGE_SIZE);
-                                } else {
-                                    setShowAll(true);
-                                }
-                            }}
-                        >
-                            {showAll ? "Show less" : "Show all"}
-                        </button>
-                    </div>
-                )}
-                {/* ←END SHOW MORE  LESS kontrolnik */}
                 <TipList
                     tips={tipsToShow}
                     favoriteIds={favoriteIds}
                     onToggleFavorite={toggleFavorite}
                 />
 
-                {/* SHOW MORE */}
-                {visibleTips.length > tipsToShow.length && (
-                    <button
-                        className="btn btn--secondary"
-                        type="button"
-                        onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
-                    >
-                        Show more
-                    </button>
-                )}
+                {/* PAGINATION CONTROLS – this is the important part that was lost */}
+                {visibleTips.length > 0 && visibleTips.length > PAGE_SIZE && (
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        margin: '20px 0',
+                        flexWrap: 'wrap',
+                        gap: '12px',
+                        fontSize: '14px',
+                        color: '#6B6B6B'
+                    }}>
+    <span>
+      Showing {tipsToShow.length} of {visibleTips.length}
+    </span>
 
+                        <div style={{ display: 'flex', gap: '12px' }}>
+                            {/* Show more – only when not showing all */}
+                            {!showAll && visibleTips.length > visibleCount && (
+                                <button
+                                    className="btn btn--secondary"
+                                    type="button"
+                                    onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                                >
+                                    Show more
+                                </button>
+                            )}
+
+                            {/* Show all / Show less */}
+                            <button
+                                className="btn btn--secondary"
+                                type="button"
+                                onClick={() => {
+                                    if (showAll) {
+                                        setShowAll(false);
+                                        setVisibleCount(PAGE_SIZE);
+                                    } else {
+                                        setShowAll(true);
+                                    }
+                                }}
+                            >
+                                {showAll ? "Show less" : "Show all"}
+                            </button>
+                        </div>
+                    </div>
+                )}
                 {/* FAVORITES */}
                 <SectionTitle>MY FAVORITES</SectionTitle>
 

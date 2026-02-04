@@ -53,3 +53,42 @@
   opacity: 0.55;
   cursor: not-allowed;
 }
+
+.btn-close-random {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $text-light;
+  background-color: $secondary;
+  border: 1px solid $border;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: color.adjust($primary, $lightness: 10%);
+    color: $text-dark;
+  }
+}
+.btn-close-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  line-height: 40px;
+  color: $text-light;
+  background-color: transparent;
+  border: 1px solid $border;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &:focus {
+    color: $primary;
+    background-color: $accent;
+    border-color: $primary;
+  }
+}
