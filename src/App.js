@@ -6,9 +6,12 @@ import Favorites from "./components/Favorites/Favorites";
 import EmptyState from "./components/EmptyState/EmptyState";
 import SectionTitle from "./components/SectionTitle/SectionTitle";
 import TipCard from "./components/TipCard/TipCard";
+import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom"; // ← dodan import
+import RandomTipSection from "./components/RandomTipSection/RandomTipSection"; // ← dodan import za RandomTipSection
+import AllTipsSection from "./components/AllTipsSection/AllTipsSection"; // ← dodan import
+import FavoritesSection from "./components/FavoritesSection/FavoritesSection"; // ← dodan import
 
-
-import  careTips  from "./data/careTips.json";
+import careTips from "./data/careTips.json";
 
 const App = () => {
     // STATE
@@ -28,7 +31,7 @@ const App = () => {
 
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
-// ← Dodamo ta useEffect, ki shrani vsakič, ko se favorite spremenijo
+    // ← Dodamo ta useEffect, ki shrani vsakič, ko se favorite spremenijo
     useEffect(() => {
         localStorage.setItem("wigTipsFavorites", JSON.stringify(favoriteIds));
     }, [favoriteIds]);
@@ -78,6 +81,11 @@ const App = () => {
     const clearRandomTip = () => {
         setRandomTip(null);
     };
+    const clearAllFavorites = () => {
+        if (window.confirm("Res želiš izbrisati vse favorite?")) {
+            setFavoriteIds([]);
+        }
+    };
 
     return (
         <div>
@@ -87,117 +95,42 @@ const App = () => {
             />
 
             <main className="container">
-                <div className="row">
-                    <SearchBar value={search} onChange={setSearch} />
-                    <button
-                        className="btn btn--primary"
-                        type="button"
-                        onClick={pickRandomTip}
-                    >
-                        Random tip
-                    </button>
-                </div>
-
-                {/* RANDOM TIP */}
-                {randomTip && (
-                    <div style={{ marginBottom: '40px' }}>
-                        <SectionTitle>Featured Random Tip</SectionTitle>
-
-                        <div>
-                            <TipCard
-                                tip={randomTip.nasvet}
-                                variant="random"
-                                isFavorite={favoriteIds.includes(randomTip.id)}
-                                onToggleFavorite={() => toggleFavorite(randomTip.id)}
-                            />
-
-                            {/* TUKAJ DODAMO × close buuton rendom – x   */}
-                            <div style={{ marginTop: '16px', textAlign: 'center' }}>
-                                <button
-                                    onClick={clearRandomTip}
-                                    className="btn-close-icon"
-                                    type="button"
-                                    title="Zapri random nasvet"   // ← tooltip ob hover
-                                    aria-label="Odstrani naključni nasvet"
-
-                                >
-                                    ×
-                                </button>
-                            </div>
-                            {/* konec × gumba */}
-                        </div>
-                    </div>
-                )}
-                {/* end RANDOM TIP */}
-
-                {/* ALL TIPS */}
-                <SectionTitle>All tips</SectionTitle>
-
-                {filteredTips.length === 0 && (
-                    <EmptyState message="No tips found. Try another keyword." />
-                )}
-
-                {filteredTips.length > 0 && visibleTips.length === 0 && (
-                    <EmptyState message="All matching tips are already in Favorites." />
-                )}
-
-                <TipList
-                    tips={tipsToShow}
-                    favoriteIds={favoriteIds}
-                    onToggleFavorite={toggleFavorite}
+                {/* Iskanje + sporočilo + random gumb – vse znotraj containerja, brez podvajanja */}
+                <SearchAndRandom
+                    search={search}
+                    setSearch={setSearch}
+                    pickRandomTip={pickRandomTip}
                 />
 
-                {/*  */}
-                {visibleTips.length > 0 && visibleTips.length > PAGE_SIZE && (
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        margin: '20px 0',
-                        flexWrap: 'wrap',
-                        gap: '12px',
-                        fontSize: '14px',
-                        color: '#6B6B6B'
-                    }}>
-    <span>
-      Showing {tipsToShow.length} of {visibleTips.length}
-    </span>
+                {/* RANDOM TIP */}
+                <RandomTipSection
+                    randomTip={randomTip}
+                    favoriteIds={favoriteIds}
+                    toggleFavorite={toggleFavorite}
+                    clearRandomTip={clearRandomTip}
+                />
 
-                        <div style={{ display: 'flex', gap: '12px' }}>
-                            {/* Show more – only when not showing all */}
-                            {!showAll && visibleTips.length > visibleCount && (
-                                <button
-                                    className="btn btn--secondary"
-                                    type="button"
-                                    onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
-                                >
-                                    Show more
-                                </button>
-                            )}
+                {/* ALL TIPS */}
+                <AllTipsSection
+                    filteredTips={filteredTips}
+                    visibleTips={visibleTips}
+                    tipsToShow={tipsToShow}
+                    showAll={showAll}
+                    setShowAll={setShowAll}
+                    visibleCount={visibleCount}
+                    setVisibleCount={setVisibleCount}
+                    PAGE_SIZE={PAGE_SIZE}
+                    favoriteIds={favoriteIds}
+                    toggleFavorite={toggleFavorite}
+                />
 
-                            {/* Show all / Show less */}
-                            <button
-                                className="btn btn--secondary"
-                                type="button"
-                                onClick={() => {
-                                    if (showAll) {
-                                        setShowAll(false);
-                                        setVisibleCount(PAGE_SIZE);
-                                    } else {
-                                        setShowAll(true);
-                                    }
-                                }}
-                            >
-                                {showAll ? "Show less" : "Show all"}
-                            </button>
-                        </div>
-                    </div>
-                )}
                 {/* FAVORITES */}
-                <SectionTitle>MY FAVORITES</SectionTitle>
-
-                <Favorites tips={careTips} favoriteIds={favoriteIds} onToggleFavorite={toggleFavorite} />
-
+                <FavoritesSection
+                    careTips={careTips}
+                    favoriteIds={favoriteIds}
+                    toggleFavorite={toggleFavorite}
+                    clearAllFavorites={clearAllFavorites}  // ← posreduj funkcijo
+                />
             </main>
         </div>
     );
