@@ -10,7 +10,7 @@ import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom"; // �
 import RandomTipSection from "./components/RandomTipSection/RandomTipSection"; // ← dodan import za RandomTipSection
 import AllTipsSection from "./components/AllTipsSection/AllTipsSection"; // ← dodan import
 import FavoritesSection from "./components/FavoritesSection/FavoritesSection"; // ← dodan import
-import testSlika from "./assets/test-slika.jpg"; // ← TO JE KLJUČNO!
+import testSlika from "./assets/testslika.jpg"; // ← TO JE KLJUČNO!
 
 import careTips from "./data/careTips.json";
 
@@ -107,7 +107,7 @@ const App = () => {
 
                 {/* Drugi način – če import ne dela, uporabi relativno pot */}
                 <img
-                    src="assets/test-slika.jpg"  // ← relativna pot od App.js
+                    src="assets/testslika.jpg"  // ← relativna pot od App.js
                     alt="Test relativna pot"
                     style={{ maxWidth: '300px', border: '3px solid blue', marginTop: '20px' }}
                 />

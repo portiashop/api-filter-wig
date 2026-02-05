@@ -1,7 +1,7 @@
 // src/components/Header/Header.jsx
 import styles from "./_header.module.scss";
 
-
+import logourl from "url:../../assets/logolasulje.svg";
 
 const Header = ({ title, subtitle }) => {
     return (
@@ -10,10 +10,11 @@ const Header = ({ title, subtitle }) => {
                 <div className={styles.left}>
 
                     <img
-                        src="../assets/testslika.jpg"
-                        alt="Logotest"
+                        src={logourl}
+                        alt="Logo"
                         style={{ width: 120, height: 120, border: "1px solid red" }}
                     />
+
 
                     <div className={styles.titleGroup}>
                         <h1 className={styles.title}>{title}</h1>
