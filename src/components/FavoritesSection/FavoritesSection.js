@@ -6,15 +6,8 @@ const FavoritesSection = ({
                               careTips,
                               favoriteIds,
                               toggleFavorite,
+                              clearAllFavorites,  // ← prejmeš funkcijo iz App.js
                           }) => {
-    // Funkcija za brisanje vseh favoritov
-    const clearAllFavorites = () => {
-        if (window.confirm("Res želiš izbrisati vse favorite?")) {
-            // Nastavi prazno polje → vse se izbriše
-            setFavoriteIds([]);
-        }
-    };
-
     return (
         <>
             <SectionTitle>
@@ -30,11 +23,11 @@ const FavoritesSection = ({
                     <button
                         className="btn btn--secondary"
                         type="button"
-                        onClick={clearAllFavorites}
+                        onClick={clearAllFavorites}  // ← kliče funkcijo iz prop-a
                         style={{
                             padding: '8px 16px',
                             fontSize: '14px',
-                            color: '#C64444', // rdeča za "izbriši"
+                            color: '#C64444',
                             borderColor: '#C64444',
                         }}
                     >

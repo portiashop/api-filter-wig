@@ -5,6 +5,12 @@
   background: $bg;
   border-bottom: 1px solid $border;
 }
+.logo {
+  height: 80px !important;  // veliko za test
+  width: auto !important;
+  border: 3px solid green !important; // zelen okvir za debug
+}
+
 
 .inner {
   width: min(1000px, 92%);

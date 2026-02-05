@@ -10,6 +10,7 @@ import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom"; // �
 import RandomTipSection from "./components/RandomTipSection/RandomTipSection"; // ← dodan import za RandomTipSection
 import AllTipsSection from "./components/AllTipsSection/AllTipsSection"; // ← dodan import
 import FavoritesSection from "./components/FavoritesSection/FavoritesSection"; // ← dodan import
+import testSlika from "./assets/test-slika.jpg"; // ← TO JE KLJUČNO!
 
 import careTips from "./data/careTips.json";
 
@@ -93,6 +94,24 @@ const App = () => {
                 title="Wig Care Tips"
                 subtitle="Simple care tips for everyday wig use"
             />
+            {/* TEST: slika iz src/assets/ */}
+            <div style={{ margin: '20px', textAlign: 'center' }}>
+                <h2>Test slike iz src/assets/</h2>
+
+                {/* Prvi način – import kot URL */}
+                <img
+                    src={testSlika}  // ← uvozi spodaj
+                    alt="Test slika"
+                    style={{ maxWidth: '300px', border: '3px solid red' }}
+                />
+
+                {/* Drugi način – če import ne dela, uporabi relativno pot */}
+                <img
+                    src="assets/test-slika.jpg"  // ← relativna pot od App.js
+                    alt="Test relativna pot"
+                    style={{ maxWidth: '300px', border: '3px solid blue', marginTop: '20px' }}
+                />
+            </div>
 
             <main className="container">
                 {/* Iskanje + sporočilo + random gumb – vse znotraj containerja, brez podvajanja */}
