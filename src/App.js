@@ -6,7 +6,9 @@ import Favorites from "./components/Favorites/Favorites";
 import EmptyState from "./components/EmptyState/EmptyState";
 import SectionTitle from "./components/SectionTitle/SectionTitle";
 import TipCard from "./components/TipCard/TipCard";
-import { tips } from "./data/tips";
+
+
+import  careTips  from "./data/careTips.json";
 
 const App = () => {
     // STATE
@@ -40,8 +42,9 @@ const App = () => {
     // Filter by search
     const filteredTips = useMemo(() => {
         const q = search.trim().toLowerCase();
-        if (!q) return tips;
-        return tips.filter((t) => t.tip.toLowerCase().includes(q));
+        if (!q) return careTips;  // ← spremeni tips v careTips
+
+        return careTips.filter((t) => t.nasvet.toLowerCase().includes(q));  // ← t.tip → t.nasvet
     }, [search]);
 
     // Hide favorites from All tips
@@ -54,7 +57,6 @@ const App = () => {
         return showAll ? visibleTips : visibleTips.slice(0, visibleCount);
     }, [visibleTips, visibleCount, showAll]);
 
-
     // Handlers
     const toggleFavorite = (id) => {
         setFavoriteIds((prev) =>
@@ -63,12 +65,16 @@ const App = () => {
     };
 
     const pickRandomTip = () => {
-        const list = filteredTips.length ? filteredTips : tips;
+        // Use filtered tips if they exist, otherwise use all tips
+        const list = filteredTips.length ? filteredTips : careTips; // ← tips → careTips
+        // If there are no tips available, stop the function
         if (!list.length) return;
-
+        // Pick a random index from the list
         const index = Math.floor(Math.random() * list.length);
+        // Save the selected tip into state so it appears in the UI
         setRandomTip(list[index]);
     };
+
     const clearRandomTip = () => {
         setRandomTip(null);
     };
@@ -99,12 +105,13 @@ const App = () => {
 
                         <div>
                             <TipCard
-                                tip={randomTip.tip}
+                                tip={randomTip.nasvet}
                                 variant="random"
                                 isFavorite={favoriteIds.includes(randomTip.id)}
                                 onToggleFavorite={() => toggleFavorite(randomTip.id)}
                             />
-                            {/* TUKAJ DODAMO × GUMB – x   */}
+
+                            {/* TUKAJ DODAMO × close buuton rendom – x   */}
                             <div style={{ marginTop: '16px', textAlign: 'center' }}>
                                 <button
                                     onClick={clearRandomTip}
@@ -140,7 +147,7 @@ const App = () => {
                     onToggleFavorite={toggleFavorite}
                 />
 
-                {/* PAGINATION CONTROLS – this is the important part that was lost */}
+                {/*  */}
                 {visibleTips.length > 0 && visibleTips.length > PAGE_SIZE && (
                     <div style={{
                         display: 'flex',
@@ -189,11 +196,8 @@ const App = () => {
                 {/* FAVORITES */}
                 <SectionTitle>MY FAVORITES</SectionTitle>
 
-                <Favorites
-                    tips={tips}
-                    favoriteIds={favoriteIds}
-                    onToggleFavorite={toggleFavorite}
-                />
+                <Favorites tips={careTips} favoriteIds={favoriteIds} onToggleFavorite={toggleFavorite} />
+
             </main>
         </div>
     );

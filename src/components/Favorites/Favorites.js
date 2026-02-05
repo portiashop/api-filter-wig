@@ -14,7 +14,7 @@ const Favorites = ({ tips, favoriteIds, onToggleFavorite }) => {
                     {favoriteTips.map((t) => (
                         <TipCard
                             key={t.id}
-                            tip={t.tip}
+                            tip={t.nasvet}
                             isFavorite={true}
                             onToggleFavorite={() => onToggleFavorite(t.id)}
                         />
