@@ -1,0 +1,27 @@
+@use "../../styles/general/colors" as *;
+@use "../../styles/general/mixins" as *;
+
+.row {
+  display: grid;
+  gap: 10px;
+
+  @include md {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid $border;
+  color: $text-dark;
+  background: $bg;
+}
+
+.input:focus {
+  outline: none;
+  border-color: $primary;
+  box-shadow: 0 0 0 3px rgba(195, 81, 47, 0.18);
+}

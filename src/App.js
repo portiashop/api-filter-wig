@@ -1,21 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import Header from "./components/Header/Header";
 import TipList from "./components/TipList/TipList";
-import SearchBar from "./components/SearchBar/SearchBar";
+
 import Favorites from "./components/Favorites/Favorites";
-import EmptyState from "./components/EmptyState/EmptyState";
+
 import SectionTitle from "./components/SectionTitle/SectionTitle";
 import TipCard from "./components/TipCard/TipCard";
 import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom";
 import RandomTipSection from "./components/RandomTipSection/RandomTipSection";
 import AllTipsSection from "./components/AllTipsSection/AllTipsSection";
 import FavoritesSection from "./components/FavoritesSection/FavoritesSection";
-import FoterCopy from "./components/FoterCopy/FoterCopy";
+
 
 
 import Footer from "./components/Footer/Footer";
 import careTips from "./data/careTips.json";
-import FoterCopy from "./components/FoterCopy/FoterCopy";
+
 
 
 const App = () => {
@@ -148,8 +148,7 @@ const App = () => {
                 />
             </main>
             <Footer/>
-            <FoterCopy title=" lasulje.si  All rights reserved  "  lasulje
-            />
+
         </div>
     );
 };

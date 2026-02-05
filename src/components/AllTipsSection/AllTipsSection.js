@@ -1,6 +1,6 @@
 // src/components/AllTipsSection/AllTipsSection.jsx
 import TipList from "../TipList/TipList";
-import EmptyState from "../EmptyState/EmptyState";
+
 import SectionTitle from "../SectionTitle/SectionTitle";
 
 const AllTipsSection = ({
