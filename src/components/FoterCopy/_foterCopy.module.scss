@@ -1,0 +1,12 @@
+@use "../../styles/general/colors" as *;
+@use "../../styles/general/mixins" as *;
+
+.footer {
+
+  display: flex;
+  justify-content: center;
+  background: $bg;
+  align-items: center;
+  color: $text-light;
+  margin-bottom: 50px;
+}

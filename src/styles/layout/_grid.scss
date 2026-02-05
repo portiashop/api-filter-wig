@@ -1,14 +1,13 @@
-$container : 1200px;
+$container: 1200px;
 
 .container {
+  width: min($container, 92%);
   margin: 0 auto;
-  max-width: $container;
-  width:60%;
 }
-/* colum nastavi za layout če želiš dva z for zanko    */
+
 .row {
   display: flex;
-  min-height: 1px;
   flex-direction: column;
   align-items: center;
+  min-height: 1px;
 }

@@ -6,9 +6,8 @@
   border-bottom: 1px solid $border;
 }
 .logo {
-  height: 80px !important;  // veliko za test
-  width: auto !important;
-  border: 3px solid green !important; // zelen okvir za debug
+  height: 130px;
+  width: 200px;
 }
 
 
@@ -29,7 +28,7 @@
 
 .subtitle {
   margin: 6px 0 0;
-  font-size: 13px;
+  font-size: 15px;
   color: $text-light;
 
   @include md {

@@ -6,19 +6,23 @@ import Favorites from "./components/Favorites/Favorites";
 import EmptyState from "./components/EmptyState/EmptyState";
 import SectionTitle from "./components/SectionTitle/SectionTitle";
 import TipCard from "./components/TipCard/TipCard";
-import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom"; // ← dodan import
-import RandomTipSection from "./components/RandomTipSection/RandomTipSection"; // ← dodan import za RandomTipSection
-import AllTipsSection from "./components/AllTipsSection/AllTipsSection"; // ← dodan import
-import FavoritesSection from "./components/FavoritesSection/FavoritesSection"; // ← dodan import
-import testSlika from "./assets/testslika.jpg"; // ← TO JE KLJUČNO!
+import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom";
+import RandomTipSection from "./components/RandomTipSection/RandomTipSection";
+import AllTipsSection from "./components/AllTipsSection/AllTipsSection";
+import FavoritesSection from "./components/FavoritesSection/FavoritesSection";
+import FoterCopy from "./components/FoterCopy/FoterCopy";
 
+
+import Footer from "./components/Footer/Footer";
 import careTips from "./data/careTips.json";
+import FoterCopy from "./components/FoterCopy/FoterCopy";
+
 
 const App = () => {
     // STATE
     const [search, setSearch] = useState("");
 
-    // ← Tukaj dodamo inicializacijo iz localStorage
+    // Inicializacija iz localStorage
     const [favoriteIds, setFavoriteIds] = useState(() => {
         const saved = localStorage.getItem("wigTipsFavorites");
         return saved ? JSON.parse(saved) : [];
@@ -94,27 +98,19 @@ const App = () => {
                 title="Wig Care Tips"
                 subtitle="Simple care tips for everyday wig use"
             />
-            {/* TEST: slika iz src/assets/ */}
+            {/* NAREDI BANNER  */}
             <div style={{ margin: '20px', textAlign: 'center' }}>
-                <h2>Test slike iz src/assets/</h2>
-
-                {/* Prvi način – import kot URL */}
+                <h2>BANNER /</h2> // TODO banner
                 <img
-                    src={testSlika}  // ← uvozi spodaj
+                    //  src={testSlika}  TO DO  ← uvozi
                     alt="Test slika"
                     style={{ maxWidth: '300px', border: '3px solid red' }}
                 />
 
-                {/* Drugi način – če import ne dela, uporabi relativno pot */}
-                <img
-                    src="assets/testslika.jpg"  // ← relativna pot od App.js
-                    alt="Test relativna pot"
-                    style={{ maxWidth: '300px', border: '3px solid blue', marginTop: '20px' }}
-                />
             </div>
 
             <main className="container">
-                {/* Iskanje + sporočilo + random gumb – vse znotraj containerja, brez podvajanja */}
+                {/* Iskanje + sporočilo + random gumb    */}
                 <SearchAndRandom
                     search={search}
                     setSearch={setSearch}
@@ -143,14 +139,17 @@ const App = () => {
                     toggleFavorite={toggleFavorite}
                 />
 
-                {/* FAVORITES */}
+                {/* MY FAVORITES */}
                 <FavoritesSection
                     careTips={careTips}
                     favoriteIds={favoriteIds}
                     toggleFavorite={toggleFavorite}
-                    clearAllFavorites={clearAllFavorites}  // ← posreduj funkcijo
+                    clearAllFavorites={clearAllFavorites}
                 />
             </main>
+            <Footer/>
+            <FoterCopy title=" lasulje.si  All rights reserved  "  lasulje
+            />
         </div>
     );
 };

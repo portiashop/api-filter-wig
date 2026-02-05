@@ -8,14 +8,11 @@ const Header = ({ title, subtitle }) => {
         <header className={styles.header}>
             <div className={styles.inner}>
                 <div className={styles.left}>
-
                     <img
                         src={logourl}
                         alt="Logo"
-                        style={{ width: 120, height: 120, border: "1px solid red" }}
+                        className={styles.logo}
                     />
-
-
                     <div className={styles.titleGroup}>
                         <h1 className={styles.title}>{title}</h1>
                         <p className={styles.subtitle}>{subtitle}</p>
