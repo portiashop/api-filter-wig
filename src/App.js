@@ -1,10 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+
 import Header from "./components/Header/Header";
-import TipList from "./components/TipList/TipList";
-
-import Favorites from "./components/Favorites/Favorites";
-
-import TipCard from "./components/TipCard/TipCard";
 import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom";
 import RandomTipSection from "./components/RandomTipSection/RandomTipSection";
 import AllTipsSection from "./components/AllTipsSection/AllTipsSection";
@@ -13,12 +9,11 @@ import Footer from "./components/Footer/Footer";
 
 import careTips from "./data/careTips.json";
 
-
 const App = () => {
     // STATE
     const [search, setSearch] = useState("");
 
-    // Inicializacija iz localStorage
+    // Favorites from localStorage
     const [favoriteIds, setFavoriteIds] = useState(() => {
         const saved = localStorage.getItem("wigTipsFavorites");
         return saved ? JSON.parse(saved) : [];
@@ -26,18 +21,17 @@ const App = () => {
 
     const [randomTip, setRandomTip] = useState(null);
 
-    // Show-more state (6 at first)
+    // Show-more state
     const PAGE_SIZE = 6;
     const [showAll, setShowAll] = useState(false);
-
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
-    // ← Dodamo ta useEffect, ki shrani vsakič, ko se favorite spremenijo
+    // Save favorites to localStorage
     useEffect(() => {
         localStorage.setItem("wigTipsFavorites", JSON.stringify(favoriteIds));
     }, [favoriteIds]);
 
-    // Reset show-more when search changes, Reset showAll when search changes
+    // Reset pagination when search changes
     useEffect(() => {
         setVisibleCount(PAGE_SIZE);
         setShowAll(false);
@@ -46,9 +40,9 @@ const App = () => {
     // Filter by search
     const filteredTips = useMemo(() => {
         const q = search.trim().toLowerCase();
-        if (!q) return careTips;  // ← spremeni tips v careTips
+        if (!q) return careTips;
 
-        return careTips.filter((t) => t.nasvet.toLowerCase().includes(q));  // ← t.tip → t.nasvet
+        return careTips.filter((t) => (t.nasvet || "").toLowerCase().includes(q));
     }, [search]);
 
     // Hide favorites from All tips
@@ -56,7 +50,7 @@ const App = () => {
         return filteredTips.filter((t) => !favoriteIds.includes(t.id));
     }, [filteredTips, favoriteIds]);
 
-    // Only show N tips
+    // Only show N tips (or all)
     const tipsToShow = useMemo(() => {
         return showAll ? visibleTips : visibleTips.slice(0, visibleCount);
     }, [visibleTips, visibleCount, showAll]);
@@ -69,21 +63,17 @@ const App = () => {
     };
 
     const pickRandomTip = () => {
-        // Use filtered tips if they exist, otherwise use all tips
-        const list = filteredTips.length ? filteredTips : careTips; // ← tips → careTips
-        // If there are no tips available, stop the function
+        const list = filteredTips.length ? filteredTips : careTips;
         if (!list.length) return;
-        // Pick a random index from the list
+
         const index = Math.floor(Math.random() * list.length);
-        // Save the selected tip into state so it appears in the UI
         setRandomTip(list[index]);
     };
 
-    const clearRandomTip = () => {
-        setRandomTip(null);
-    };
+    const clearRandomTip = () => setRandomTip(null);
+
     const clearAllFavorites = () => {
-        if (window.confirm("Res želiš izbrisati vse favorite?")) {
+        if (window.confirm("Do you really want to clear all favorites?")) {
             setFavoriteIds([]);
         }
     };
@@ -95,52 +85,37 @@ const App = () => {
                 subtitle="Simple care tips for everyday wig use"
             />
 
-
-            {/* NAREDI BANNER  */}
-            <div style={{ margin: '20px', textAlign: 'center' }}>
-                <h2>BANNER /</h2> // TODO banner
+            {/* Banner (temporary) */}
+            <div style={{ margin: "20px", textAlign: "center" }}>
+                <h2>BANNER /</h2>
                 <img
-                    //  src={testSlika}  TO DO  ← uvozi
-                    alt="Test slika"
-                    style={{ maxWidth: '300px', border: '3px solid red' }}
+                    alt="Test image"
+                    style={{ maxWidth: "300px", border: "3px solid red" }}
                 />
-
             </div>
 
             <main className="container">
-                <Header
-                    title="Wig Care Tips"
-                    subtitle="Simple care tips for everyday wig use"
-                />
-
-                {/* NAREDI BANNER  */}
-                <div style={{ margin: '20px', textAlign: 'center' }}>
-                    <h2>BANNER /</h2> // TODO banner
-                    <img
-                        //  src={testSlika}  TO DO  ← uvozi
-                        alt="Test slika"
-                        style={{ maxWidth: '300px', border: '3px solid red' }}
-                    />
-
-                </div>
-
-                <main className="container">
-                    {/* Iskanje + sporočilo + random gumb    */}
+                {/* Search + Random */}
+                <section id="top">
                     <SearchAndRandom
                         search={search}
                         setSearch={setSearch}
                         pickRandomTip={pickRandomTip}
                     />
+                </section>
 
-                    {/* RANDOM TIP */}
+                {/* Random tip */}
+                <section id="random">
                     <RandomTipSection
                         randomTip={randomTip}
                         favoriteIds={favoriteIds}
                         toggleFavorite={toggleFavorite}
                         clearRandomTip={clearRandomTip}
                     />
+                </section>
 
-                    {/* ALL TIPS */}
+                {/* All tips */}
+                <section id="tips">
                     <AllTipsSection
                         filteredTips={filteredTips}
                         visibleTips={visibleTips}
@@ -153,19 +128,25 @@ const App = () => {
                         favoriteIds={favoriteIds}
                         toggleFavorite={toggleFavorite}
                     />
+                </section>
 
-                    {/* MY FAVORITES */}
+                {/* Favorites */}
+                <section id="favorites">
                     <FavoritesSection
                         careTips={careTips}
                         favoriteIds={favoriteIds}
                         toggleFavorite={toggleFavorite}
                         clearAllFavorites={clearAllFavorites}
                     />
-                </main>
-                <Footer/>
+                </section>
 
+                {/* Products (later) */}
+                <section id="products">{/* later */}</section>
+            </main>
+
+            <Footer />
         </div>
-);
+    );
 };
 
 export default App;
