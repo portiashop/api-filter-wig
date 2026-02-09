@@ -1,6 +1,19 @@
 @use "./colors" as *;
 
 * { box-sizing: border-box; }
+.appShell {
+  width: min(900px, 92%);
+  margin: 24px auto;
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.appContent {
+  padding: 18px;
+}
 
 body {
   margin: 0;

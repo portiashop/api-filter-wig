@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 
 import Header from "./components/Header/Header";
+import Banner from "./components/Banner/Banner";
 import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom";
 import RandomTipSection from "./components/RandomTipSection/RandomTipSection";
 import AllTipsSection from "./components/AllTipsSection/AllTipsSection";
 import FavoritesSection from "./components/FavoritesSection/FavoritesSection";
+
 import Footer from "./components/Footer/Footer";
+import bannerImg from "./assets/bannerTop.jpg.jpg";
 
 import careTips from "./data/careTips.json";
 
@@ -79,20 +82,15 @@ const App = () => {
     };
 
     return (
-        <div>
+        <div className="appShell">
             <Header
                 title="Wig Care Tips"
                 subtitle="Simple care tips for everyday wig use"
             />
 
-            {/* Banner (temporary) */}
-            <div style={{ margin: "20px", textAlign: "center" }}>
-                <h2>BANNER /</h2>
-                <img
-                    alt="Test image"
-                    style={{ maxWidth: "300px", border: "3px solid red" }}
-                />
-            </div>
+            {/* Banner - picture todo */}
+            <Banner image={bannerImg} />
+
 
             <main className="container">
                 {/* Search + Random */}
@@ -140,8 +138,8 @@ const App = () => {
                     />
                 </section>
 
-                {/* Products (later) */}
-                <section id="products">{/* later */}</section>
+                {/* Products (later) todo  */}
+                <section id="products">{/* later todo */}</section>
             </main>
 
             <Footer />

@@ -1,0 +1,44 @@
+@use "../../styles/general/colors" as *;
+@use "../../styles/general/mixins" as *;
+
+.banner {
+  position: relative;
+  background-color: $secondary;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid $border;
+}
+
+.overlay {
+  background: rgba(255, 255, 255, 0.75); // soft overlay for readability
+}
+
+.inner {
+  padding: 20px;
+  text-align: center;
+
+  @include md {
+    padding: 28px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  color: $text-dark;
+
+  @include md {
+    font-size: 22px;
+  }
+}
+
+.text {
+  margin-top: 8px;
+  font-size: 14px;
+  color: $text-light;
+
+  @include md {
+    font-size: 15px;
+  }
+}
