@@ -8,8 +8,9 @@ import AllTipsSection from "./components/AllTipsSection/AllTipsSection";
 import FavoritesSection from "./components/FavoritesSection/FavoritesSection";
 
 import Footer from "./components/Footer/Footer";
-import topBannerImg from "./assets/banner-top.jpg";
-import bottomBannerImg from "./assets/banner-bottom.jpg";
+import topBannerImg from "url:./assets/banner-top.jpg";
+import bottomBannerImg from "url:./assets/banner-bottom.jpg";
+
 
 import careTips from "./data/careTips.json";
 
@@ -148,10 +149,12 @@ const App = () => {
             </main>
             <Banner
                 title="Need help choosing a wig?"
-                text="Explore products and guides on LASULJE.SI"
+                text="Explore guides and products on LASULJE.SI"
                 image={bottomBannerImg}
-                align="left"
+                linkLabel="Visit shop"
+                linkUrl="https://lasulje.si"
             />
+
             <Footer />
         </div>
     );
