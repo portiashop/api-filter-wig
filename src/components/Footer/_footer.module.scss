@@ -2,7 +2,7 @@
 @use "../../styles/general/mixins" as *;
 
 .footer {
-  margin-top: 40px;
+  margin-top: 1px;
   padding: 32px 20px;
   background: $textColorbg;
   border-top: 1px solid $border;
@@ -11,6 +11,7 @@
 .grid {
   display: grid;
   gap: 24px;
+
 
   @include md {
     grid-template-columns: repeat(3, 1fr);
