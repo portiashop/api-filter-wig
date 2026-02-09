@@ -2,26 +2,39 @@
 @use "../../styles/general/mixins" as *;
 
 .row {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-
-  @include md {
-    grid-template-columns: 1fr auto;
-    align-items: end;
-  }
+  width: 100%;
 }
+button {
+  height: 44px;
+}
+
 
 .input {
   width: 100%;
   padding: 12px 14px;
   border-radius: 12px;
   border: 1px solid $border;
-  color: $text-dark;
+  font-size: 14px;
   background: $bg;
+  color: $text-dark;
 }
 
 .input:focus {
   outline: none;
   border-color: $primary;
-  box-shadow: 0 0 0 3px rgba(195, 81, 47, 0.18);
+}
+
+/* Desktop layout */
+@include md {
+  .row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .input {
+    flex: 1;
+  }
 }
