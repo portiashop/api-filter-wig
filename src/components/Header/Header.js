@@ -9,7 +9,6 @@ const Header = ({ title, subtitle }) => {
         <header className={styles.header}>
             <div className="container">
                 <div className={styles.top}>
-
                     <img
                         src={logourl}
                         alt="Logo"

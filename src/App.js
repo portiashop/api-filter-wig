@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import Header from "./components/Header/Header";
 import TipList from "./components/TipList/TipList";
-import SectionTitle from "./components/SectionTitle/SectionTitle";
+
 import Favorites from "./components/Favorites/Favorites";
-import SectionTitle from "./components/SectionTitle/SectionTitle";
+
 import TipCard from "./components/TipCard/TipCard";
 import SearchAndRandom from "./components/SearchAndRandom/SearchAndRandom";
 import RandomTipSection from "./components/RandomTipSection/RandomTipSection";
@@ -12,8 +12,6 @@ import FavoritesSection from "./components/FavoritesSection/FavoritesSection";
 import Footer from "./components/Footer/Footer";
 
 import careTips from "./data/careTips.json";
-
-
 
 
 const App = () => {
@@ -96,6 +94,8 @@ const App = () => {
                 title="Wig Care Tips"
                 subtitle="Simple care tips for everyday wig use"
             />
+
+
             {/* NAREDI BANNER  */}
             <div style={{ margin: '20px', textAlign: 'center' }}>
                 <h2>BANNER /</h2> // TODO banner
@@ -108,47 +108,64 @@ const App = () => {
             </div>
 
             <main className="container">
-                {/* Iskanje + sporočilo + random gumb    */}
-                <SearchAndRandom
-                    search={search}
-                    setSearch={setSearch}
-                    pickRandomTip={pickRandomTip}
+                <Header
+                    title="Wig Care Tips"
+                    subtitle="Simple care tips for everyday wig use"
                 />
 
-                {/* RANDOM TIP */}
-                <RandomTipSection
-                    randomTip={randomTip}
-                    favoriteIds={favoriteIds}
-                    toggleFavorite={toggleFavorite}
-                    clearRandomTip={clearRandomTip}
-                />
+                {/* NAREDI BANNER  */}
+                <div style={{ margin: '20px', textAlign: 'center' }}>
+                    <h2>BANNER /</h2> // TODO banner
+                    <img
+                        //  src={testSlika}  TO DO  ← uvozi
+                        alt="Test slika"
+                        style={{ maxWidth: '300px', border: '3px solid red' }}
+                    />
 
-                {/* ALL TIPS */}
-                <AllTipsSection
-                    filteredTips={filteredTips}
-                    visibleTips={visibleTips}
-                    tipsToShow={tipsToShow}
-                    showAll={showAll}
-                    setShowAll={setShowAll}
-                    visibleCount={visibleCount}
-                    setVisibleCount={setVisibleCount}
-                    PAGE_SIZE={PAGE_SIZE}
-                    favoriteIds={favoriteIds}
-                    toggleFavorite={toggleFavorite}
-                />
+                </div>
 
-                {/* MY FAVORITES */}
-                <FavoritesSection
-                    careTips={careTips}
-                    favoriteIds={favoriteIds}
-                    toggleFavorite={toggleFavorite}
-                    clearAllFavorites={clearAllFavorites}
-                />
-            </main>
-            <Footer/>
+                <main className="container">
+                    {/* Iskanje + sporočilo + random gumb    */}
+                    <SearchAndRandom
+                        search={search}
+                        setSearch={setSearch}
+                        pickRandomTip={pickRandomTip}
+                    />
+
+                    {/* RANDOM TIP */}
+                    <RandomTipSection
+                        randomTip={randomTip}
+                        favoriteIds={favoriteIds}
+                        toggleFavorite={toggleFavorite}
+                        clearRandomTip={clearRandomTip}
+                    />
+
+                    {/* ALL TIPS */}
+                    <AllTipsSection
+                        filteredTips={filteredTips}
+                        visibleTips={visibleTips}
+                        tipsToShow={tipsToShow}
+                        showAll={showAll}
+                        setShowAll={setShowAll}
+                        visibleCount={visibleCount}
+                        setVisibleCount={setVisibleCount}
+                        PAGE_SIZE={PAGE_SIZE}
+                        favoriteIds={favoriteIds}
+                        toggleFavorite={toggleFavorite}
+                    />
+
+                    {/* MY FAVORITES */}
+                    <FavoritesSection
+                        careTips={careTips}
+                        favoriteIds={favoriteIds}
+                        toggleFavorite={toggleFavorite}
+                        clearAllFavorites={clearAllFavorites}
+                    />
+                </main>
+                <Footer/>
 
         </div>
-    );
+);
 };
 
 export default App;
