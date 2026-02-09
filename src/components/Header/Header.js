@@ -1,35 +1,55 @@
-// src/components/Header/Header.jsx
+import { useState } from "react";
 import styles from "./_header.module.scss";
-
 import logourl from "url:../../assets/logolasulje.svg";
 
 const Header = ({ title, subtitle }) => {
+    const [open, setOpen] = useState(false);
+
     return (
         <header className={styles.header}>
-            <div className={styles.inner}>
-                <div className={styles.left}>
+            <div className="container">
+                <div className={styles.top}>
+
                     <img
                         src={logourl}
                         alt="Logo"
                         className={styles.logo}
                     />
-                    <div className={styles.titleGroup}>
-                        <h1 className={styles.title}>{title}</h1>
-                        <p className={styles.subtitle}>{subtitle}</p>
-                    </div>
+
+
+                    <button
+                        type="button"
+                        className={styles.burger}
+                        aria-label="Toggle navigation"
+                        aria-expanded={open}
+                        onClick={() => setOpen((v) => !v)}
+                    >
+                        <span />
+                        <span />
+                        <span />
+                    </button>
+
+                    <nav className={`${styles.nav} ${open ? styles.navOpen : ""}`}>
+                        <a className={styles.link} href="#tips" onClick={() => setOpen(false)}>
+                            Tips
+                        </a>
+                        <a className={styles.link} href="#favorites" onClick={() => setOpen(false)}>
+                            Favorites
+                        </a>
+                        <a className={styles.link} href="#products" onClick={() => setOpen(false)}>
+                            Products
+                        </a>
+
+                        <a className={`${styles.link} ${styles.cta}`} href="#contact" onClick={() => setOpen(false)}>
+                            Contact
+                        </a>
+                    </nav>
                 </div>
 
-                {/* navigacija */}
-                <nav className={styles.nav}>
-                    <ul className={styles.navList}>
-                        <li className={styles.navItem}>
-                            <a href="/" className={styles.navLink}>Domov</a>
-                        </li>
-                        <li className={styles.navItem}>
-                            <a href="#favoriti" className={styles.navLink}>Favoriti</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div className={styles.hero}>
+                    <h1 className={styles.title}>{title}</h1>
+                    <p className={styles.subtitle}>{subtitle}</p>
+                </div>
             </div>
         </header>
     );

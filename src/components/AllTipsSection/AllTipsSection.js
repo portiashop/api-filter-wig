@@ -21,11 +21,14 @@ const AllTipsSection = ({
 
             {/* Empty states */}
             {filteredTips.length === 0 && (
-                <EmptyState message="No tips found. Try another keyword." />
+                <p style={{ color: "#6B6B6B", fontStyle: "italic" }}>
+                    No tips found. Try another keyword.
+                </p>
             )}
-
             {filteredTips.length > 0 && visibleTips.length === 0 && (
-                <EmptyState message="All matching tips are already in Favorites." />
+                <p style={{ color: "#6B6B6B", fontStyle: "italic" }}>
+                    All matching tips are already in Favorites.
+                </p>
             )}
 
             {/* Seznam nasvetov */}

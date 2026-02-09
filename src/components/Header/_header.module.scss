@@ -11,27 +11,142 @@
 }
 
 
-.inner {
-  width: min(1000px, 92%);
-  margin: 0 auto;
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 14px 0;
+  gap: 12px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  color: $text-dark;
+  letter-spacing: 0.5px;
+}
+
+.logoDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: $primary;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 14px;
+}
+
+.link {
+  text-decoration: none;
+  color: $text-light;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.link:hover {
+  color: $text-dark;
+  background: $secondary;
+}
+
+.cta {
+  background: $primary;
+  color: white;
+}
+
+.cta:hover {
+  background: $primary;
+  color: white;
+  filter: brightness(0.95);
+}
+
+/* Burger (mobile) */
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 42px;
+  height: 40px;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: $bg;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: $text-dark;
+  border-radius: 2px;
+}
+
+/* Mobile open nav */
+.navOpen {
+  display: flex;
+  position: absolute;
+  right: 4%;
+  top: 62px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 180px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.hero {
+  padding: 12px 0 18px;
 }
 
 .title {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
+  color: $text-dark;
 
   @include md {
-    font-size: 26px;
+    font-size: 28px;
   }
 }
 
 .subtitle {
   margin: 6px 0 0;
-  font-size: 15px;
   color: $text-light;
+  font-size: 14px;
 
   @include md {
-    font-size: 14px;
+    font-size: 15px;
+  }
+}
+
+/* Desktop nav */
+@include md {
+  .burger {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .navOpen {
+    position: static;
+    flex-direction: row;
+    min-width: auto;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
   }
 }

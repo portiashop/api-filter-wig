@@ -36,7 +36,7 @@ const FavoritesSection = ({
                 </div>
             )}
 
-            {/* Če ni favoritov – lep empty state */}
+            {/* Če ni favoritov –  empty state */}
             {favoriteIds.length === 0 ? (
                 <p style={{
                     textAlign: 'center',
@@ -44,7 +44,7 @@ const FavoritesSection = ({
                     fontSize: '16px',
                     marginTop: '20px',
                 }}>
-                    Še nimaš nobenega favorita. Dodaj kakšen nasvet s srčkom! ❤️
+                    Še nimaš nobenega favorita. Dodaj kakšen nasvet k priljubljenim! ❤️
                 </p>
             ) : (
                 <Favorites
