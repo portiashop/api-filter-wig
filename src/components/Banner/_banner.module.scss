@@ -1,3 +1,70 @@
+@use "../../styles/general/colors" as *;
+@use "../../styles/general/mixins" as *;
+
+.banner {
+  position: relative;
+  min-height: 180px;
+  background-color: $secondary;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid $border;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* FULL overlay across the image (darkens it slightly) */
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* makes text readable */
+}
+
+/* Center wrapper stays above overlay */
+.center {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Text box (semi-transparent white) */
+.content {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(3px); /* optional, looks premium */
+  padding: 18px 20px;
+  border-radius: 14px;
+
+  max-width: 520px;
+  width: calc(100% - 32px);
+  text-align: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  color: $text-dark;
+
+  @include md {
+    font-size: 22px;
+  }
+}
+
+.text {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: $text-dark; /* IMPORTANT: darker for readability */
+
+  @include md {
+    font-size: 15px;
+  }
+}
 .link {
   display: inline-block;
   margin-top: 14px;

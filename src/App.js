@@ -90,12 +90,12 @@ const App = () => {
                 subtitle="Simple care tips for everyday wig use"
             />
 
-            {/* Banner - picture todo */}
             <Banner
                 title="Daily wig care, made simple"
                 text="Search tips, save favorites, and feel confident every day."
                 image={topBannerImg}
             />
+
 
 
             <main className="container">
@@ -154,6 +154,7 @@ const App = () => {
                 linkLabel="Visit shop"
                 linkUrl="https://lasulje.si"
             />
+
 
             <Footer />
         </div>
