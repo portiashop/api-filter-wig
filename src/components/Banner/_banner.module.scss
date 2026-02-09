@@ -2,7 +2,6 @@
 @use "../../styles/general/mixins" as *;
 
 .banner {
-  position: relative;
   background-color: $secondary;
   background-size: cover;
   background-position: center;
@@ -11,16 +10,30 @@
 }
 
 .overlay {
-  background: rgba(255, 255, 255, 0.75); // soft overlay for readability
+  padding: 0; // keeps banner clean
+}
+
+.overlayLight {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.overlayDark {
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .inner {
   padding: 20px;
-  text-align: center;
-
   @include md {
     padding: 28px;
   }
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
 }
 
 .title {
@@ -34,7 +47,7 @@
 }
 
 .text {
-  margin-top: 8px;
+  margin: 8px 0 0;
   font-size: 14px;
   color: $text-light;
 

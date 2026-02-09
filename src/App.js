@@ -8,7 +8,8 @@ import AllTipsSection from "./components/AllTipsSection/AllTipsSection";
 import FavoritesSection from "./components/FavoritesSection/FavoritesSection";
 
 import Footer from "./components/Footer/Footer";
-import bannerImg from "./assets/bannerTop.jpg.jpg";
+import topBannerImg from "./assets/banner-top.jpg";
+import bottomBannerImg from "./assets/banner-bottom.jpg";
 
 import careTips from "./data/careTips.json";
 
@@ -89,7 +90,11 @@ const App = () => {
             />
 
             {/* Banner - picture todo */}
-            <Banner image={bannerImg} />
+            <Banner
+                title="Daily wig care, made simple"
+                text="Search tips, save favorites, and feel confident every day."
+                image={topBannerImg}
+            />
 
 
             <main className="container">
@@ -141,7 +146,12 @@ const App = () => {
                 {/* Products (later) todo  */}
                 <section id="products">{/* later todo */}</section>
             </main>
-
+            <Banner
+                title="Need help choosing a wig?"
+                text="Explore products and guides on LASULJE.SI"
+                image={bottomBannerImg}
+                align="left"
+            />
             <Footer />
         </div>
     );
