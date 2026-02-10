@@ -1,12 +1,14 @@
 {
-  "name": "tips  api",
+  "name": "tips api",
   "private": true,
   "version": "0.0.0",
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "server": "json-server --watch data/db.json --port 1234"
   },
+
   "dependencies": {
     "@parcel/transformer-sass": "^2.16.3",
     "json-server": "^1.0.0-beta.5",

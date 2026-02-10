@@ -1,0 +1,48 @@
+{
+  "tips": [
+
+      {"id": 511, "type": "motivation", "category": "wig_general", "lang": "sl", "text": "Vsak pogled v ogledalo je majhna zmaga – ti si še vedno tukaj.", "relatedProductIds": [210, 315]},
+      {"id": 512, "type": "humor", "category": "wig_synthetic", "lang": "sl", "text": "Sintetična lasulja: edina stvar, ki je zjutraj videti bolje kot jaz.", "relatedProductIds": [188, 412]},
+      {"id": 513, "type": "motivation", "category": "chemo_care", "lang": "sl", "text": "Ni treba biti močna vsak dan. Dovolj je, da si tukaj danes.", "relatedProductIds": [501]},
+      {"id": 514, "type": "humor", "category": "wig_party", "lang": "sl", "text": "Ta lasulja s perjem me dela 300 % bolj dramatično – hvala, dragi.", "relatedProductIds": [777, 888]},
+      {"id": 515, "type": "medical_info", "category": "wig_natural", "lang": "sl", "text": "Človeške lasulje lahko barvamo, a za svetlejše tone priporočamo profesionalca.", "relatedProductIds": [421]},
+      {"id": 516, "type": "motivation", "category": "accessories", "lang": "sl", "text": "Ena lepa ruta lahko spremeni celoten občutek dneva.", "relatedProductIds": [260]},
+      {"id": 517, "type": "humor", "category": "wig_synthetic", "lang": "sl", "text": "Moja lasulja je preživela dež, veter in mojo kavo – legenda.", "relatedProductIds": [188]},
+      {"id": 518, "type": "motivation", "category": "wig_natural", "lang": "sl", "text": "Ko se lasje vrnejo, boš praznovala vsakega novega milimetra.", "relatedProductIds": [220]},
+      {"id": 519, "type": "humor", "category": "gifts", "lang": "sl", "text": "Darilo zanjo: lasulja + čaj. Ker oboje gre z roko v roki.", "relatedProductIds": [601, 602]},
+      {"id": 520, "type": "medical_info", "category": "chemo_care", "lang": "sl", "text": "Nežen piling lasišča pomaga pri regeneraciji – brez močnega drgnjenja.", "relatedProductIds": [340]},
+
+      {"id": 521, "type": "motivation", "category": "wig_general", "lang": "sl", "text": "Lasulja je le dodatek. Prava moč nosiš v srcu.", "relatedProductIds": [210]},
+      {"id": 522, "type": "humor", "category": "wig_party", "lang": "sl", "text": "Z rdečo lasuljo se počutim, kot da sem glavna v filmu.", "relatedProductIds": [555]},
+      {"id": 523, "type": "motivation", "category": "chemo_care", "lang": "sl", "text": "Tudi majhni koraki te peljejo proti cilju – pojdi po svoje.", "relatedProductIds": [501]},
+      {"id": 524, "type": "humor", "category": "accessories", "lang": "sl", "text": "Kapica + veliki obročki = instant diva energija.", "relatedProductIds": [160, 140]},
+      {"id": 525, "type": "medical_info", "category": "wig_synthetic", "lang": "sl", "text": "Sintetične lasulje shranjuj stran od neposredne sončne svetlobe, da ne zbledijo.", "relatedProductIds": [188]},
+      {"id": 526, "type": "motivation", "category": "wig_natural", "lang": "sl", "text": "Vredno je investirati v kakovost – čutiš razliko vsak dan.", "relatedProductIds": [421]},
+      {"id": 527, "type": "humor", "category": "wig_general", "lang": "sl", "text": "Moja zbirka lasulk raste hitreje kot moje rastline.", "relatedProductIds": [210, 220]},
+      {"id": 528, "type": "motivation", "category": "gifts", "lang": "sl", "text": "Najboljše darilo je vedeti, da te nekdo res vidi.", "relatedProductIds": [601]},
+      {"id": 529, "type": "humor", "category": "wig_party", "lang": "sl", "text": "Ta srebrna lasulja in jaz – midva sva zdaj ekipa za disko.", "relatedProductIds": [777]},
+      {"id": 530, "type": "medical_info", "category": "accessories", "lang": "sl", "text": "Svilen ali bambusov podložek zmanjša draženje in potenje.", "relatedProductIds": [160]},
+
+      {"id": 531, "type": "motivation", "category": "chemo_care", "lang": "sl", "text": "Tvoje telo se bori. Ti pa mu lahko pomagaš z nežnostjo.", "relatedProductIds": [501]},
+      {"id": 532, "type": "humor", "category": "wig_synthetic", "lang": "sl", "text": "Sintetična lasulja: brez frizerskih kriz, samo dobre vibracije.", "relatedProductIds": [412]},
+      {"id": 533, "type": "motivation", "category": "wig_general", "lang": "sl", "text": "Sprememba videza ni beg – je prevzem kontrole.", "relatedProductIds": [315]},
+      {"id": 534, "type": "humor", "category": "wig_natural", "lang": "sl", "text": "Človeška lasulja zahteva nego kot pravi lasje. Drama level: visoko.", "relatedProductIds": [421]},
+      {"id": 535, "type": "medical_info", "category": "chemo_care", "lang": "sl", "text": "Med ponovno rastjo se lahko tekstura las spremeni – to je normalno.", "relatedProductIds": [305]},
+      {"id": 536, "type": "motivation", "category": "accessories", "lang": "sl", "text": "Lep turban ti da občutek, da si se danes potrudila zase.", "relatedProductIds": [260]},
+      {"id": 537, "type": "humor", "category": "wig_party", "lang": "sl", "text": "Roza lasulja vklopljena. Težave izklopljene.", "relatedProductIds": [555]},
+      {"id": 538, "type": "motivation", "category": "wig_natural", "lang": "sl", "text": "Ti lasje so začasni. Tvoj nasmeh pa ostane.", "relatedProductIds": [220]},
+      {"id": 539, "type": "humor", "category": "gifts", "lang": "sl", "text": "Podarila sem ji mehke nogavice. Rekla je, da so boljše od psihiatra.", "relatedProductIds": [603]},
+      {"id": 540, "type": "medical_info", "category": "wig_general", "lang": "sl", "text": "Lasulje na stojalu – nikoli v plastični vrečki, da se ne zmečkajo.", "relatedProductIds": [350]},
+
+      {"id": 541, "type": "motivation", "category": "chemo_care", "lang": "sl", "text": "Vsak dan, ko vstaneš, pišeš svojo zgodbo o zmagi.", "relatedProductIds": [501]},
+      {"id": 542, "type": "humor", "category": "wig_synthetic", "lang": "sl", "text": "Moja lasulja je bolj vodoodporna kot moje načrte za vikend.", "relatedProductIds": [188]},
+      {"id": 543, "type": "motivation", "category": "wig_party", "lang": "sl", "text": "Danes nosimo bleščice in se pretvarjamo, da je vse OK.", "relatedProductIds": [777]},
+      {"id": 544, "type": "humor", "category": "accessories", "lang": "sl", "text": "Ruta z leopardjim vzorcem = takojšen 80s vibe.", "relatedProductIds": [140]},
+      {"id": 545, "type": "medical_info", "category": "wig_natural", "lang": "sl", "text": "Človeške lasulje česemo od konic proti korenom – tako jih najmanj poškodujemo.", "relatedProductIds": [421]},
+      {"id": 546, "type": "motivation", "category": "wig_general", "lang": "sl", "text": "Vsaka verzija tebe si zasluži, da se počuti lepo.", "relatedProductIds": [210]},
+      {"id": 547, "type": "humor", "category": "wig_party", "lang": "sl", "text": "Ta mavrična lasulja je zdaj moj emocionalni podporni pes.", "relatedProductIds": [555]},
+      {"id": 548, "type": "motivation", "category": "gifts", "lang": "sl", "text": "Majhna pozornost postane velik spomin v težkih časih.", "relatedProductIds": [601, 603]},
+      {"id": 549, "type": "humor", "category": "wig_synthetic", "lang": "sl", "text": "Sintetična lasulja: vedno pripravljena za selfi, nikoli pod stresom.", "relatedProductIds": [188]},
+      {"id": 550, "type": "motivation", "category": "chemo_care", "lang": "sl", "text": "Počivaj danes, da boš jutri spet lahko bojevnica.", "relatedProductIds": [501]}
+    ]
+}

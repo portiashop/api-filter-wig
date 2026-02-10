@@ -38,3 +38,18 @@ button {
     flex: 1;
   }
 }
+.select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid $border;
+  font-size: 14px;
+  background: $bg;
+  color: $text-dark;
+}
+
+@include md {
+  .select {
+    width: 180px;
+  }
+}
