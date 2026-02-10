@@ -109,11 +109,11 @@ const App = () => {
     return (
         <div className="appShell">
             <Header
-                title=" Care Tips"
+                title=" Tips"
                 subtitle="Simple tips for everyday  "
             />
             <Banner
-                title="Daily care tips, made simple"
+                title="Daily tips, made simple"
                 text="Search tips, save favorites, and feel confident every day."
                 image={topBannerImg}
             />
