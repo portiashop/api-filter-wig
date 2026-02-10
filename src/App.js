@@ -12,25 +12,53 @@ import topBannerImg from "url:./assets/banner-top.jpg";
 import bottomBannerImg from "url:./assets/banner-bottom.jpg";
 
 
-import careTips from "./data/careTips.json";
+import careTips from "./data/careTips2.json";
 
 const App = () => {
     // STATE
     const [search, setSearch] = useState("");
-
     // Favorites from localStorage
     const [favoriteIds, setFavoriteIds] = useState(() => {
         const saved = localStorage.getItem("wigTipsFavorites");
         return saved ? JSON.parse(saved) : [];
     });
-
     const [randomTip, setRandomTip] = useState(null);
-
     // Show-more state
     const PAGE_SIZE = 6;
     const [showAll, setShowAll] = useState(false);
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-
+    // Filter by search
+    const filteredTips = useMemo(() => {
+        const q = search.trim().toLowerCase();
+        if (!q) return careTips;
+        return careTips.filter((t) => (t.text || "").toLowerCase().includes(q));
+    }, [search]);
+    // Hide favorites from All tips
+    const visibleTips = useMemo(() => {
+        return filteredTips.filter((t) => !favoriteIds.includes(t.id));
+    }, [filteredTips, favoriteIds]);
+    // Only show N tips (or all)
+    const tipsToShow = useMemo(() => {
+        return showAll ? visibleTips : visibleTips.slice(0, visibleCount);
+    }, [visibleTips, visibleCount, showAll]);
+    // Handlers
+    const toggleFavorite = (id) => {
+        setFavoriteIds((prev) =>
+            prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+        );
+    };
+    const pickRandomTip = () => {
+        const list = filteredTips.length ? filteredTips : careTips;
+        if (!list.length) return;
+        const index = Math.floor(Math.random() * list.length);
+        setRandomTip(list[index]);
+    };
+    const clearRandomTip = () => setRandomTip(null);
+    const clearAllFavorites = () => {
+        if (window.confirm("Do you really want to clear all favorites?")) {
+            setFavoriteIds([]);
+        }
+    };
     // Save favorites to localStorage
     useEffect(() => {
         localStorage.setItem("wigTipsFavorites", JSON.stringify(favoriteIds));
@@ -42,62 +70,17 @@ const App = () => {
         setShowAll(false);
     }, [search]);
 
-    // Filter by search
-    const filteredTips = useMemo(() => {
-        const q = search.trim().toLowerCase();
-        if (!q) return careTips;
-
-        return careTips.filter((t) => (t.nasvet || "").toLowerCase().includes(q));
-    }, [search]);
-
-    // Hide favorites from All tips
-    const visibleTips = useMemo(() => {
-        return filteredTips.filter((t) => !favoriteIds.includes(t.id));
-    }, [filteredTips, favoriteIds]);
-
-    // Only show N tips (or all)
-    const tipsToShow = useMemo(() => {
-        return showAll ? visibleTips : visibleTips.slice(0, visibleCount);
-    }, [visibleTips, visibleCount, showAll]);
-
-    // Handlers
-    const toggleFavorite = (id) => {
-        setFavoriteIds((prev) =>
-            prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-        );
-    };
-
-    const pickRandomTip = () => {
-        const list = filteredTips.length ? filteredTips : careTips;
-        if (!list.length) return;
-
-        const index = Math.floor(Math.random() * list.length);
-        setRandomTip(list[index]);
-    };
-
-    const clearRandomTip = () => setRandomTip(null);
-
-    const clearAllFavorites = () => {
-        if (window.confirm("Do you really want to clear all favorites?")) {
-            setFavoriteIds([]);
-        }
-    };
-
     return (
         <div className="appShell">
             <Header
-                title="Wig Care Tips"
-                subtitle="Simple care tips for everyday wig use"
+                title=" Care Tips"
+                subtitle="Simple tips for everyday  "
             />
-
             <Banner
-                title="Daily wig care, made simple"
+                title="Daily care tips, made simple"
                 text="Search tips, save favorites, and feel confident every day."
                 image={topBannerImg}
             />
-
-
-
             <main className="container">
                 {/* Search + Random */}
                 <section id="top">
@@ -107,7 +90,6 @@ const App = () => {
                         pickRandomTip={pickRandomTip}
                     />
                 </section>
-
                 {/* Random tip */}
                 <section id="random">
                     <RandomTipSection
@@ -117,7 +99,6 @@ const App = () => {
                         clearRandomTip={clearRandomTip}
                     />
                 </section>
-
                 {/* All tips */}
                 <section id="tips">
                     <AllTipsSection
@@ -133,7 +114,6 @@ const App = () => {
                         toggleFavorite={toggleFavorite}
                     />
                 </section>
-
                 {/* Favorites */}
                 <section id="favorites">
                     <FavoritesSection
@@ -143,8 +123,7 @@ const App = () => {
                         clearAllFavorites={clearAllFavorites}
                     />
                 </section>
-
-                {/* Products (later) todo  */}
+                {/* Products can add (later) todo  */}
                 <section id="products">{/* later todo */}</section>
             </main>
             <Banner
@@ -154,8 +133,6 @@ const App = () => {
                 linkLabel="Visit shop"
                 linkUrl="https://lasulje.si"
             />
-
-
             <Footer />
         </div>
     );

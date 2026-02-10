@@ -1,7 +1,7 @@
 // src/components/AllTipsSection/AllTipsSection.jsx
 import TipList from "../TipList/TipList";
-
 import SectionTitle from "../SectionTitle/SectionTitle";
+import styles from "./_allTipsSections.module.scss";
 
 const AllTipsSection = ({
                             filteredTips,
@@ -34,11 +34,13 @@ const AllTipsSection = ({
             {/* Seznam nasvetov */}
             {visibleTips.length > 0 && (
                 <>
-                    <TipList
-                        tips={tipsToShow}
-                        favoriteIds={favoriteIds}
-                        onToggleFavorite={toggleFavorite}
-                    />
+                    <div className={styles.grid}>
+                        <TipList
+                            tips={tipsToShow}
+                            favoriteIds={favoriteIds}
+                            onToggleFavorite={toggleFavorite}
+                        />
+                    </div>
 
                     {/* Pagination controls – prikaže se samo če je več kot PAGE_SIZE nasvetov */}
                     {visibleTips.length > PAGE_SIZE && (

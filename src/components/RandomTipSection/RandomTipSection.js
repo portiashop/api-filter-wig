@@ -15,11 +15,11 @@ const RandomTipSection = ({
 
     return (
         <div style={{ marginBottom: '40px' }}>
-            <SectionTitle>Featured Random Tip</SectionTitle>
+            <SectionTitle>Izbrani naključni nasvet</SectionTitle>
 
             <div>
                 <TipCard
-                    tip={randomTip.nasvet}
+                    tip={randomTip.text}
                     variant="random"
                     isFavorite={favoriteIds.includes(randomTip.id)}
                     onToggleFavorite={() => toggleFavorite(randomTip.id)}
@@ -31,7 +31,7 @@ const RandomTipSection = ({
                         onClick={clearRandomTip}
                         className="btn-close-icon"
                         type="button"
-                        title="Zapri random nasvet"
+                        title="Zapri nakjučni nasvet"
                         aria-label="Odstrani naključni nasvet"
                     >
                         ×
